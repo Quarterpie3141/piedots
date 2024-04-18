@@ -1,0 +1,36 @@
+{
+    "label" : "lock",
+    "action" : "swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 10x5 --effect-vignette 0.2:0.2 --ring-color 5d3869 --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --inside-clear-color 00000000 --ring-clear-color de6a8d --key-hl-color d38aeb --text-clear-color d0afdb --text-color d0afdb --bs-hl-color de6a8d --text-caps-lock-color d0afdb --grace 2 --fade-in 1 -f",
+    "text" : "",
+    "keybind" : "l"
+}
+{
+    "label" : "reboot",
+    "action" : "systemctl reboot",
+    "text" : "",
+    "keybind" : "r"
+}
+{
+    "label" : "shutdown",
+    "action" : "systemctl poweroff",
+    "text" : "",
+    "keybind" : "s"
+}
+{
+    "label" : "logout",
+    "action" : "loginctl kill-session $XDG_SESSION_ID",
+    "text" : "",
+    "keybind" : "e"
+}
+{
+    "label" : "suspend",
+    "action" : "swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 10x5 --effect-vignette 0.2:0.2 --ring-color 5d3869 --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --inside-clear-color 00000000 --ring-clear-color de6a8d --key-hl-color d38aeb --text-clear-color d0afdb --text-color d0afdb --bs-hl-color de6a8d --text-caps-lock-color d0afdb --grace 2 --fade-in 1 -f && systemctl suspend",
+    "text" : "",
+    "keybind" : "u"
+}
+{
+    "label" : "hibernate",
+    "action" : "swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 10x5 --effect-vignette 0.2:0.2 --ring-color 5d3869 --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --inside-clear-color 00000000 --ring-clear-color de6a8d --key-hl-color d38aeb --text-clear-color d0afdb --text-color d0afdb --bs-hl-color de6a8d --text-caps-lock-color d0afdb --grace 2 --fade-in 1 -f && systemctl hibernate",
+    "text" : "",
+    "keybind" : "h"
+}
