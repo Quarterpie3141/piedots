@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
+      ./Modules/libvirt.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes"];
@@ -30,10 +31,12 @@
   };
 
 
-  networking.hostName = "prash-nixos";
   
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "prash-nixos";
+    networkmanager.enable = true;
+  };
 
   # Set your time zone.
   time.timeZone = "Australia/Perth";
@@ -77,7 +80,7 @@
     # proprietary nvidia drivers
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 
   #nvidia optimus prime settings (nvidia-offload)
@@ -120,8 +123,8 @@
   home-manager = {
 	extraSpecialArgs = { inherit inputs; };
 	users = {
-		"prash" = import ./home.nix;
-		};
+	  "prash" = import ./home.nix;
+  };
 	useGlobalPkgs = true;
   };
 
@@ -173,6 +176,7 @@
      cairo
      networkmanager-l2tp
      gnome.networkmanager-l2tp
+     networkmanagerapplet
      dunst
      swww
      waybar
@@ -185,9 +189,11 @@
      libsForQt5.kdegraphics-thumbnailers
      ffmpegthumbnailer
      kdePackages.breeze-icons
-     imv
   ];
 
+  environment.variables = { 
+  WLR_NO_HARDWARE_CURSORS = 1;
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

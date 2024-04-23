@@ -58,6 +58,7 @@
     
     pkgs.freecad
     pkgs.onlyoffice-bin_latest
+    pkgs.gh
   ];
 
 
