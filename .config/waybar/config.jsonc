@@ -1,7 +1,7 @@
 {
     "output": ["eDP-1","DP-5", "DP-6"],
     "layer": "top",
-    "position": "bottom",
+    "position": "top",
     "modules-left": [
       "hyprland/workspaces",
       "hyprland/mode"
@@ -11,6 +11,8 @@
     ],
 
     "modules-right": [
+      "cpu",
+      "custom/pad",
       "network",
       "custom/pad",
       "bluetooth",
@@ -22,7 +24,15 @@
     ],
 
     "hyprland/workspaces": {
-      "format": "{id}"
+      "format": "{id} {windows}"
+    },
+
+    
+
+    "cpu": {
+        "format": "{icon0} {icon1} {icon2} {icon3} {icon4}",
+        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+        "interval": 1
     },
 
     "network#down": {
@@ -79,14 +89,14 @@
 
     "network": {
         "tooltip": true,
-        "format-wifi": "<span foreground='#cba6f7'> {bandwidthDownBytes}</span> <span foreground='#89b4fa'> {bandwidthUpBytes}</span>",
+        "format-wifi": " ",
         "rotate": 0,
         "format-ethernet": "󰈀 ",
         "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}GHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
         "format-linked": "󰈀 {ifname} (No IP)",
         "format-disconnected": "󰖪 ",
         "tooltip-format-disconnected": "Disconnected",
-        "format-alt": " ",
+        "format-alt": "<span foreground='#cba6f7'> {bandwidthDownBytes}</span> <span foreground='#89b4fa'> {bandwidthUpBytes}</span>",
         "interval": 2
     },
 
@@ -112,16 +122,17 @@
     },
     
     "bluetooth": {
-        "format": " {status}",
+        "format": "󰂯",
         "rotate": 0,
         "format-disabled": "",
-        "format-connected": " {num_connections}",
-        "format-connected-battery": "{icon} {device_alias}-{device_battery_percentage}%",
+        "format-connected": " {device_battery_percentage}%",
+        "format-connected-battery": "",
         "format-icons": ["󰥇", "󰤾", "󰤿", "󰥀", "󰥁", "󰥂", "󰥃", "󰥄", "󰥅", "󰥆", "󰥈"],
         "tooltip-format": "{controller_alias}\n{num_connections} connected",
         "tooltip-format-connected": "{controller_alias}\n{num_connections} connected\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}",
-        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{icon} {device_battery_percentage}%"
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{icon} {device_battery_percentage}%",
+        "on-click": "blueman-manager"
     },
 
     "tray": {
@@ -132,7 +143,7 @@
 
     //custom moduls
 
-    "custom/pad": {
+    "custom/pad": { 
       "format": " ",
       "interval": "once",
       "tooltip": false
